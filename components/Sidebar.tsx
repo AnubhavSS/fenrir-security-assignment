@@ -11,7 +11,6 @@ const navItems = [
   { name: "Projects", href: "#",icon: MdLibraryBooks },
   { name: "Scans", href: "scans",icon: MdOutlineDocumentScanner },
   { name: "Schedule", href: "/",icon: MdOutlineCalendarToday },
-  { name: "Notifications", href: "#" ,icon:MdNotificationsNone},
   { name: "Settings", href: "#",icon:MdOutlineSettings },
   { name: "Support", href: "#",icon:MdOutlineContactSupport },
 ];
@@ -34,7 +33,7 @@ const { darkMode } = useStore((state) => state);
   <span className="text-lg font-semibold text-primary">aps</span>
 
   <button onClick={() => setOpen(!open)} className="pointer">
-    <FiMenu size={22} />
+    <FiMenu size={22} className={darkMode ? "text-gray-500" : "text-gray-600"} />
   </button>
 </div>
 
@@ -74,18 +73,12 @@ const { darkMode } = useStore((state) => state);
   </nav>
 </div>
 
-      {/* Overlay */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
-        />
-      )}
+      
 
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-64
+          fixed top-0 left-0 h-screen w-54 lg:w-64
           bg-white dark:bg-[#111]
           border-r border-gray-200
           transform transition-transform duration-300

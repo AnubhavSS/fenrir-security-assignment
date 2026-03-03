@@ -6,7 +6,7 @@ import ConsolePanel from "@/components/ConsolePanel";
 import FindingCard from "@/components/FindingCard";
 export default function ScanDetailPage() {
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-6 p-6 w-full">
 
       {/* ===== TOP PROGRESS CARD ===== */}
       <div className="bg-white dark:bg-[#1A1A1A] rounded-xl shadow mt-15 space-y-6 pt-">

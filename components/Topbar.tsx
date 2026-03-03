@@ -8,6 +8,7 @@ export default function Topbar({
   onMenuClick: () => void;
 }) {
   const handleClick = (type:string) => {
+  
     toast(`${type} clicked!`, {
 position: "top-center",
 autoClose: 3000,
@@ -21,6 +22,20 @@ transition: Bounce,
 });
   };
   return (
+    <>
+    <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
     <div
       className="
         fixed top-0 right-0
@@ -34,19 +49,7 @@ transition: Bounce,
         border-b border-gray-200 dark:border-gray-800
       "
     >
-      <ToastContainer
-position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick={false}
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
-transition={Bounce}
-/>
+  
 <div className="text-lg font-semibold text-dark dark:text-gray-500">Scan</div>
 
       {/* Left Section (Mobile Only) */}
@@ -109,5 +112,6 @@ transition={Bounce}
     </button>
     </div>
     </div>
+    </>
   );
 }
