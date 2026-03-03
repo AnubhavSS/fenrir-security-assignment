@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
-    // router.push("/dashboard");
+    router.push("/dashboard");
   };
     return (
     <div className="min-h-screen flex flex-col lg:flex-row  bg-linear-to-br 
