@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useStore } from "@/store";
 
 
 type Scan = {
@@ -17,7 +18,8 @@ type Scan = {
 
 export default function ScanTable({ scans }: { scans: Scan[] }) {
   const router = useRouter();
-
+  const text= useStore((state) => state.searchText);
+ 
   return (
     <>
       {/* DESKTOP TABLE */}
@@ -34,15 +36,15 @@ export default function ScanTable({ scans }: { scans: Scan[] }) {
             </tr>
           </thead>
           <tbody>
-            {scans.map((scan) => (
+            {scans.filter((scan) => scan.name.toLowerCase().includes(text.toLowerCase())||scan.type.toLowerCase().includes(text.toLowerCase())).map((scan) => (
               <tr
                 key={scan.id}
                 onClick={() => router.push(`/scans/${scan.id}`)}
                 className="cursor-pointer border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#222] transition"
               >
-                <td className="p-4 font-medium">{scan.name}</td>
-                <td>{scan.type}</td>
-                <td>
+                <td className="p-4 font-bold text-gray-900 dark:text-white">{scan.name}</td>
+                <td className="text-gray-600 dark:text-gray-400 font-bold">{scan.type}</td>
+                <td className="text-gray-600 dark:text-gray-400">
                   <StatusChip status={scan.status} />
                 </td>
                 <td><ProgressBar progress={scan.progress}/></td>
@@ -54,7 +56,7 @@ export default function ScanTable({ scans }: { scans: Scan[] }) {
                     <SeverityBadge level="low" count={scan.low} />
                   </div>
                 </td>
-                <td>{scan.lastScan}</td>
+                <td className="p-4 font-bold text-gray-900 dark:text-gray-400">{scan.lastScan}</td>
               </tr>
             ))}
           </tbody>

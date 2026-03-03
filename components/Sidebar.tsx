@@ -4,12 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import { MdOutlineDashboardCustomize,MdOutlineContactSupport,MdOutlineSettings,MdLibraryBooks,MdOutlineDocumentScanner,MdOutlineCalendarToday,MdNotificationsNone  } from "react-icons/md";
+import { useStore } from "../store";
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: MdOutlineDashboardCustomize },
   { name: "Projects", href: "#",icon: MdLibraryBooks },
-  { name: "Scans", href: "#",icon: MdOutlineDocumentScanner },
-  { name: "Schedule", href: "#",icon: MdOutlineCalendarToday },
+  { name: "Scans", href: "scans",icon: MdOutlineDocumentScanner },
+  { name: "Schedule", href: "/",icon: MdOutlineCalendarToday },
   { name: "Notifications", href: "#" ,icon:MdNotificationsNone},
   { name: "Settings", href: "#",icon:MdOutlineSettings },
   { name: "Support", href: "#",icon:MdOutlineContactSupport },
@@ -18,6 +19,9 @@ const navItems = [
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
 const pathname = usePathname();
+const currentPath = pathname.split("/")[1];
+const { darkMode } = useStore((state) => state);
+
   return (
     <>
       {/* Mobile Header */}
@@ -46,8 +50,8 @@ const pathname = usePathname();
 >
   <nav className="flex flex-col py-4 px-4 gap-2">
       {navItems.map((item) => {
-    const isActive = pathname === item.href;
-
+    const isActive = currentPath === item.href;
+  
     return (
       <Link
         key={item.name}
@@ -131,7 +135,38 @@ const pathname = usePathname();
   })}
 </nav>
 
+
+
        <div className="absolute bottom-6 left-4 right-4">
+        <label className="inline-flex items-center cursor-pointer">
+  <label className="inline-flex items-center cursor-pointer">
+  <input type="checkbox" className="sr-only peer" />
+
+  <div onClick={()=>useStore.setState({darkMode:!darkMode})}
+    className="
+      border border-gray-300
+      relative w-9 h-5
+      bg-neutral-quaternary
+      rounded-full
+      transition-colors duration-300
+      peer-checked:bg-primary
+      peer-focus:ring-4 peer-focus:ring-primary/30
+      after:content-['']
+      after:absolute
+      after:top-px
+      after:left-[2px]
+      after:h-4
+      after:w-4
+      after:rounded-full
+      after:bg-gray-500
+      after:transition-transform
+      after:duration-300
+      peer-checked:after:translate-x-4
+    "
+  ></div>
+</label>
+  <span className="select-none ms-3 text-sm font-medium text-gray-600 dark:text-gray-400">Dark/Light Mode</span>
+</label>
   <div className="flex items-center gap-3
                   p-3 rounded-xl
                   dark:bg-[#1A1A1A]

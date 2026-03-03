@@ -12,13 +12,8 @@ export default function Dashboard() {
     const [open, setOpen] = useState(false);
 
   return (
-   <div className="flex min-h-screen bg-gray-50 dark:bg-light">
-
-      
-     
-      {/* <Sidebar /> */}
-      <Sidebar />
-      <Topbar onMenuClick={() => setOpen(true)} />
+   <div className="flex min-h-screen bg-white dark:bg-[#111]">
+    
       <main className="flex-1 p-6 pt-[80px] space-y-6">
         {/* Severity Stats */}
         <Overview />

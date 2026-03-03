@@ -1,7 +1,7 @@
 "use client";
 
 import { IoWarningOutline } from "react-icons/io5";
-import { text } from "stream/consumers";
+
 
 export default function Overview() {
   return (
@@ -124,7 +124,7 @@ function SeverityStat({
       </div>
 
       {/* Row 2 */}
-      <div className="flex items-center  gap-2">
+      <div className="flex items-center justify-between  gap-2">
        <p className={`text-xl md:text-2xl font-semibold text-dark dark:text-light`}>
           {value}
         </p>
