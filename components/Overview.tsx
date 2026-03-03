@@ -3,16 +3,20 @@
 import { IoWarningOutline } from "react-icons/io5";
 
 
+/**
+ * Overview component for the dashboard.
+ * Displays high-level organization stats and categorized vulnerability counts with change indicators.
+ */
 export default function Overview() {
   return (
     <div className="bg-white dark:bg-[#1A1A1A] 
                     rounded-xl p-4 md:p-6 shadow
                     flex flex-col gap-6">
 
-      {/* TOP ROW: ORG INFO */}
+      {/* TOP ROW: Organization information and scan summary */}
   <div className="flex flex-col md:flex-row md:items-center justify-center gap-4">
 
-        {/* Left Info */}
+        {/* Left Info: Key metrics about the organization and scan counts */}
    <div className="flex-1 grid grid-cols-2 md:flex md:flex-wrap gap-4">
 
     <InfoItem label="Org" value="Project X" />
@@ -24,13 +28,13 @@ export default function Overview() {
 
   </div>
 
-        {/* Time indicator */}
+        {/* Relative time indicator for data freshness */}
         <div className="text-xs text-gray-500 dark:text-gray-500 flex">
           10 mins ago
         </div>
       </div>
 
-      {/* SEVERITY SECTION */}
+      {/* SEVERITY SECTION: Visual cards for vulnerability counts by severity */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-7">
 
         <SeverityStat
@@ -69,6 +73,9 @@ export default function Overview() {
   );
 }
 
+/**
+ * Component to display a specific vulnerability severity stat with a change indicator.
+ */
 function SeverityStat({
   label,
   value,
@@ -76,12 +83,18 @@ function SeverityStat({
   color,
   respective,
 }: {
+  /** The severity level name. */
   label: string;
+  /** The current count of vulnerabilities. */
   value: number;
+  /** String describing the change compared to a previous period. */
   change: string;
+  /** Color theme for the severity level. */
   color: "critical" | "high" | "medium" | "low";
+  /** Whether the change is an increase or decrease. */
   respective: "increase" | "decrease";
 }) {
+  /** Mapping of severity levels to Tailwind CSS color classes. */
   const colorMap = {
     critical: {
       text: "text-dark dark:text-red-400",
@@ -137,11 +150,16 @@ function SeverityStat({
   );
 }
 
+/**
+ * Component to display a simple information item with a label and value.
+ */
 function InfoItem({
   label,
   value,
 }: {
+  /** The descriptive label for the information item. */
   label: string;
+  /** The value associated with the label. */
   value: string;
 }) {
   return (

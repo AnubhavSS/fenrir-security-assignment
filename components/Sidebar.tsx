@@ -9,21 +9,28 @@ import { useStore } from "../store";
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: MdOutlineDashboardCustomize },
   { name: "Projects", href: "#",icon: MdLibraryBooks },
-  { name: "Scans", href: "scans",icon: MdOutlineDocumentScanner },
+  { name: "Scans", href: "/scans/scan-101",icon: MdOutlineDocumentScanner },
   { name: "Schedule", href: "/",icon: MdOutlineCalendarToday },
   { name: "Settings", href: "#",icon:MdOutlineSettings },
   { name: "Support", href: "#",icon:MdOutlineContactSupport },
 ];
 
+/**
+ * Navigation sidebar component for the application.
+ * Handles both desktop (static side panel) and mobile (collapsible drawer) layouts.
+ */
 export default function Sidebar() {
+  /** Local state for managing mobile sidebar visibility. */
   const [open, setOpen] = useState(false);
+  /** Current path to determine which navigation item is active. */
 const pathname = usePathname();
 const currentPath = pathname.split("/")[1];
+/** Dark mode preference from the global store for conditional styling. */
 const { darkMode } = useStore((state) => state);
 
   return (
     <>
-      {/* Mobile Header */}
+      {/* Mobile Header: Visible only on smaller screens */}
       <div className="md:hidden fixed top-0 left-0 w-full z-50
                 flex items-center justify-between
                 px-4 h-[60px]
@@ -37,10 +44,9 @@ const { darkMode } = useStore((state) => state);
   </button>
 </div>
 
-{/* Mobile Dropdown Menu */}
+{/* Mobile Dropdown Menu: Collapsible navigation for small screens */}
 <div
-  className={`
-    md:hidden fixed top-[60px] left-0 w-full z-40
+  className={`md:hidden fixed top-[60px] left-0 w-full z-40
     bg-white dark:bg-[#111]
     border-b dark:border-gray-800
     transform transition-transform duration-300 ease-in-out
@@ -56,14 +62,12 @@ const { darkMode } = useStore((state) => state);
         key={item.name}
         href={item.href}
         onClick={() => setOpen(false)}
-        className={`
-          px-13 py-2 rounded-full text-lg font-medium transition flex items-center 
+        className={`px-13 py-2 rounded-full text-lg font-medium transition flex items-center 
           ${
             isActive
               ? "bg-primary/40 text-primary"
               : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#222]"
-          }
-        `}
+          }`}
       >
         <item.icon size={22} className="mr-2" />
         {item.name}
@@ -75,10 +79,9 @@ const { darkMode } = useStore((state) => state);
 
       
 
-      {/* Sidebar */}
+      {/* Sidebar: Static sidebar for desktop and slide-in for mobile */}
       <aside
-        className={`
-          fixed top-0 left-0 h-screen w-54 lg:w-64
+        className={`fixed top-0 left-0 h-screen w-54 lg:w-64
           bg-white dark:bg-[#111]
           border-r border-gray-200
           transform transition-transform duration-300
@@ -89,17 +92,20 @@ const { darkMode } = useStore((state) => state);
         `}
       >
         <div className="flex items-center justify-between p-6">
+          {/* Brand Logo and Name */}
          <div className=" flex items-center gap-3">
   <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center">
     <div className="w-2 h-2 rounded-full bg-white" />
   </div>
   <span className="text-primary text-lg font-medium">aps</span>
 </div>
+          {/* Close button for mobile drawer */}
           <button
             className="md:hidden"
             onClick={() => setOpen(false)}
           >
             <FiX size={22} />
+
           </button>
         </div>
 
@@ -112,14 +118,12 @@ const { darkMode } = useStore((state) => state);
         key={item.name}
         href={item.href}
         onClick={() => setOpen(false)}
-        className={`
-          px-13 py-2 rounded-full text-lg font-medium transition flex items-center 
+        className={`px-13 py-2 rounded-full text-lg font-medium transition flex items-center 
           ${
             isActive
               ? "bg-primary/40 text-primary"
               : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#222]"
-          }
-        `}
+          }`}
       >
         <item.icon size={22} className="mr-2" />
         {item.name}
@@ -136,8 +140,7 @@ const { darkMode } = useStore((state) => state);
   <input type="checkbox" className="sr-only peer" />
 
   <div onClick={()=>useStore.setState({darkMode:!darkMode})}
-    className="
-      border border-gray-300
+    className="border border-gray-300
       relative w-9 h-5
       bg-neutral-quaternary
       rounded-full
@@ -154,8 +157,7 @@ const { darkMode } = useStore((state) => state);
       after:bg-gray-500
       after:transition-transform
       after:duration-300
-      peer-checked:after:translate-x-4
-    "
+      peer-checked:after:translate-x-4"
   ></div>
 </label>
   <span className="select-none ms-3 text-sm font-medium text-gray-600 dark:text-gray-400">Dark/Light Mode</span>

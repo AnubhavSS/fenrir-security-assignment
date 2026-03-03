@@ -1,15 +1,34 @@
+/**
+ * Represents a security scan result.
+ */
 export type Scan = {
+  /** Unique identifier for the scan. */
   id: string;
+  /** Human-readable name of the scanned target. */
   name: string;
+  /** Methodology used for the scan. */
   type: "Greybox" | "Blackbox" | "Whitebox";
+  /** Current execution status of the scan. */
   status: "Completed" | "Scheduled" | "Failed";
+  /** Percentage of completion (0-100). */
   progress: number;
+  /** Count of critical vulnerabilities found. */
   critical: number;
+  /** Count of high-severity vulnerabilities found. */
   high: number;
+  /** Count of medium-severity vulnerabilities found. */
   medium: number;
+  /** Count of low-severity vulnerabilities found. */
   low: number;
+  /** Relative time since the last scan was performed. */
   lastScan: string;
 };
+
+/**
+ * Utility function to generate mock scan data for demonstration.
+ * @param count - The number of mock scan objects to generate.
+ * @returns An array of generated Scan objects.
+ */
 export const generateScans = (count: number) => {
   return Array.from({ length: count }, (_, i) => ({
     id: `scan-${100 + i}`,
@@ -29,6 +48,9 @@ export const generateScans = (count: number) => {
   }));
 };
 
+/**
+ * Mock activity logs simulating an automated penetration test workflow.
+ */
 export const activityLogs =  [
     {
       "timestamp": "09:00:00",

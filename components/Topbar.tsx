@@ -2,11 +2,20 @@
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import { FiMenu } from "react-icons/fi";
 
+/**
+ * Header navigation bar component for the dashboard.
+ * Contains global actions like exporting reports and stopping active scans.
+ */
 export default function Topbar({
   onMenuClick,
 }: {
+  /** Callback function to handle the mobile menu toggle. */
   onMenuClick: () => void;
 }) {
+  /**
+   * Temporary click handler to demonstrate action buttons using toast notifications.
+   * @param type - The name of the action performed.
+   */
   const handleClick = (type:string) => {
   
     toast(`${type} clicked!`, {
@@ -23,6 +32,7 @@ transition: Bounce,
   };
   return (
     <>
+    {/* Container for global action notifications */}
     <ToastContainer
 position="top-center"
 autoClose={3000}
@@ -37,8 +47,7 @@ theme="light"
 transition={Bounce}
 />
     <div
-      className="
-        fixed top-0 right-0
+      className="fixed top-0 right-0
         w-full md:w-auto
         md:left-64
         h-[60px]
@@ -46,19 +55,18 @@ transition={Bounce}
         flex items-center justify-between
         px-5
         bg-white dark:bg-[#111]
-        border-b border-gray-200 dark:border-gray-800
-      "
+        border-b border-gray-200 dark:border-gray-800"
     >
   
 <div className="text-lg font-semibold text-dark dark:text-gray-500">Scan</div>
 
-      {/* Left Section (Mobile Only) */}
+      {/* Left Section: Branding shown only on mobile when sidebar is hidden */}
       <div className="md:hidden flex items-center gap-2">
       <div className="w-3 h-3 rounded-full bg-primary" />  
         <span className="text-lg font-semibold">Scan</span>
       </div>
 
-      {/* Menu Button (Mobile Only) */}
+      {/* Menu Button: Triggers the mobile sidebar drawer */}
       <button
         onClick={onMenuClick}
         className="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#222]"
@@ -68,13 +76,12 @@ transition={Bounce}
 
     
 
-      {/* Export Report and Stop Scan Buttons */}
+      {/* Action Buttons: Global dashboard and scan controls */}
 
   <div className="flex flex-wrap gap-3 ">
        <button
        onClick={()=>handleClick("Export Report")}
-        className="
-        hidden
+        className="hidden
         md:block
         px-5 py-2.5
         rounded-lg
@@ -85,16 +92,14 @@ transition={Bounce}
         hover:bg-gray-50 dark:hover:bg-[#222]
         active:scale-[0.98]
         transition
-        cursor-pointer
-      "
+        cursor-pointer"
     >
      Export Report
     </button>
 
        <button
        onClick={()=>handleClick("Stop Scan")}
-      className="
-      cursor-pointer
+      className="cursor-pointer
         px-5 py-2.5
         rounded-lg
         bg-red-100
@@ -105,8 +110,7 @@ transition={Bounce}
         active:scale-[0.98]
         transition
         hidden
-        md:block
-      "
+        md:block"
     >
       Stop Scan
     </button>

@@ -16,13 +16,22 @@ type Scan = {
   lastScan: string;
 };
 
-export default function ScanTable({ scans }: { scans: Scan[] }) {
+/**
+ * Component to display a table of security scans.
+ * Supports both desktop table view and mobile card view.
+ * Includes filtering based on the global search text.
+ */
+export default function ScanTable({ scans }: { 
+  /** Array of scan objects to be displayed in the table. */
+  scans: Scan[] 
+}) {
   const router = useRouter();
+  /** Global search text from the store to filter scans by name or type. */
   const text= useStore((state) => state.searchText);
  
   return (
     <>
-      {/* DESKTOP TABLE */}
+      {/* DESKTOP TABLE: Detailed view for larger screens */}
       <div className="hidden md:block bg-white dark:bg-[#1A1A1A] rounded-xl shadow overflow-hidden">
         <table className="w-full text-sm">
           <thead className="text-left border-b dark:border-gray-700 text-gray-500">
@@ -63,7 +72,7 @@ export default function ScanTable({ scans }: { scans: Scan[] }) {
         </table>
       </div>
 
-      {/* MOBILE CARDS */}
+      {/* MOBILE CARDS: Compact card view for small screens */}
       <div className="md:hidden space-y-4">
         {scans.map((scan) => (
           <div
@@ -111,6 +120,9 @@ const STATUS_STYLES: Record<Status, string> = {
     "bg-red-100 border border-red-500 text-red-700 dark:bg-red-900/40 dark:text-red-400",
 };
 
+/**
+ * Visual chip indicating the current status of a scan.
+ */
 function StatusChip({ status }: { status: Status }) {
   return (
     <span
@@ -143,11 +155,16 @@ const SEVERITY_STYLES: Record<Severity, string> = {
     "bg-green-500 text-white dark:bg-green-900/40 dark:text-green-400",
 };
 
+/**
+ * Badge showing the count of vulnerabilities for a specific severity level.
+ */
 function SeverityBadge({
   level,
   count,
 }: {
+  /** Severity level (critical, high, medium, low). */
   level: Severity;
+  /** Optional count of findings for this severity. */
   count?: number;
 }) {
   return (
@@ -172,6 +189,9 @@ function SeverityBadge({
   );
 }
 
+/**
+ * Progress bar component used within the scan table.
+ */
 function ProgressBar({ progress }: { progress: number }) {
   // Clamp progress between 0–100 so chaos doesn't break layout
   const safeProgress = Math.min(100, Math.max(0, progress));

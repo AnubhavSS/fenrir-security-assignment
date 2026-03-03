@@ -26,9 +26,14 @@ export const metadata: Metadata = {
 
 
 
+/**
+ * Root layout component that wraps the entire application.
+ * Provides global fonts, global styles, and the theme provider.
+ */
 export default function RootLayout({
   children,
 }: {
+  /** The child components to be rendered within the layout. */
   children: React.ReactNode;
 }) {
  

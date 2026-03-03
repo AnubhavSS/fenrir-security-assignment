@@ -6,10 +6,21 @@ import { useStore } from "@/store";
 
 
 
+/**
+ * Toolbar component for the dashboard.
+ * Provides search functionality, filtering options, and layout controls.
+ * Uses a global store to sync search text across the dashboard.
+ */
 export default function DashboardToolbar() {
+  /** Local search state for the input field. */
   const [search, setSearch] = useState<string>("");
+  /** Global store action to update search text used by other components (e.g., ScanTable). */
   const setSearchText = useStore((state) => state.setSearchText);
 
+  /**
+   * Temporary click handler to demonstrate button interaction using toast notifications.
+   * @param text - The name of the button that was clicked.
+   */
   const handleClick=(text:string)=>{
    toast(`${text} clicked!`, {
 position: "bottom-center",
@@ -27,6 +38,7 @@ transition: Bounce,
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
+      {/* Notification container for toast messages */}
 <ToastContainer
 position="bottom-center"
 autoClose={5000}
@@ -41,7 +53,7 @@ theme="light"
 transition={Bounce}
 />
 
-      {/* LEFT SECTION */}
+      {/* LEFT SECTION: Search and Filters */}
  <div className="flex flex-col sm:flex-row gap-3 flex-1">
 
         {/* Search Input */}

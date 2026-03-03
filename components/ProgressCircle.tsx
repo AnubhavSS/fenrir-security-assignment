@@ -1,13 +1,25 @@
 "use client";
 
+/**
+ * Props for the ProgressCircle component.
+ */
 type ProgressCircleProps = {
-  value: number; // 0 - 100
+  /** The percentage value to display (0 to 100). */
+  value: number;
 };
 
+/**
+ * Component to display a circular progress indicator.
+ * Currently uses an SVG to render the circle and displays the percentage in the center.
+ */
 export default function ProgressCircle({ value }: ProgressCircleProps) {
+  /** The diameter of the circle in pixels. */
   const size = 110;
+  /** The width of the circle's stroke. */
   const strokeWidth = 8;
+  /** The radius of the circle, accounting for stroke width. */
   const radius = (size - strokeWidth) / 2;
+  /** The total circumference of the circle for stroke-dasharray calculation. */
   const circumference = 2 * Math.PI * radius;
   
 

@@ -1,13 +1,25 @@
 // import SeverityBadge from "./SeverityBadge";
 
+/**
+ * Props for the FindingCard component.
+ */
 type FindingCardProps = {
+  /** Severity level of the finding (critical, high, medium, low). */
   severity: "critical" | "high" | "medium" | "low";
+  /** Descriptive title of the vulnerability. */
   title: string;
+  /** The target endpoint or location where the finding was identified. */
   endpoint: string;
+  /** Detailed description of the identified security issue. */
   description: string;
+  /** Time when the finding was discovered. */
   time: string;
 };
 
+/**
+ * Component to display an individual security finding card.
+ * Includes severity badge, discovery time, title, endpoint, and description.
+ */
 export default function FindingCard({
   severity,
   title,
@@ -15,6 +27,7 @@ export default function FindingCard({
   description,
   time,
 }: FindingCardProps) {
+  /** Styles mapped to different severity levels for visual distinction. */
   const severityStyles = {
     critical: {
       badge: "bg-red-600 text-white dark:bg-red-900/40 dark:text-red-400",
@@ -35,15 +48,13 @@ export default function FindingCard({
 
   return (
     <div
-      className="
-        bg-white dark:bg-[#1A1A1A]
+      className="bg-white dark:bg-[#1A1A1A]
         border border-gray-200 dark:border-gray-800
         rounded-xl
         p-4
         space-y-3
         hover:shadow-sm
-        transition
-      "
+        transition"
     >
       {/* Top Row */}
       <div className="flex items-center justify-between">

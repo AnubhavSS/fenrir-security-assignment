@@ -4,16 +4,20 @@
 import StepTracker from "@/components/StepTracker";
 import ConsolePanel from "@/components/ConsolePanel";
 import FindingCard from "@/components/FindingCard";
+/**
+ * Detailed scan results page component.
+ * Displays progress, step tracking, live console logs, and identified findings.
+ */
 export default function ScanDetailPage() {
   return (
     <div className="space-y-6 p-6 w-full">
 
-      {/* ===== TOP PROGRESS CARD ===== */}
+      {/* ===== TOP PROGRESS CARD: Shows current scan progress and status ===== */}
       <div className="bg-white dark:bg-[#1A1A1A] rounded-xl shadow mt-15 space-y-6 pt-">
 
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* Progress Circle */}
+          {/* Visual progress indicator */}
           <div className="flex items-center justify-center lg:justify-start">
             <div className="flex flex-col items-center gap-2">
               <ProgressCircle value={0} />
@@ -21,12 +25,12 @@ export default function ScanDetailPage() {
             </div>
           </div>
 
-          {/* Step Tracker + Metadata */}
+          {/* Scan execution steps and configuration metadata */}
           <div className="flex-1 space-y-6">
 
             <StepTracker active={0} />
                 <div className="border-t border-0 dark:border-gray-200"/>
-            {/* Metadata Row */}
+            {/* Metadata Row: Key scan parameters and target information */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 pb-4 text-sm">
 
               <MetaItem label="Scan Type" value="Grey Box" />
@@ -41,17 +45,17 @@ export default function ScanDetailPage() {
         </div>
       </div>
 
-      {/* ===== CONSOLE + FINDINGS ===== */}
+      {/* ===== CONSOLE + FINDINGS: Real-time logs and discovered vulnerabilities ===== */}
       <div className="bg-gray-100 dark:bg-[#1A1A1A] rounded-xl shadow overflow-hidden">
 
         <div className="grid grid-cols-1 lg:grid-cols-3">
 
-          {/* LEFT - Console */}
+          {/* LEFT - Console: Live output from scanning agents */}
           <div className="lg:col-span-2 border-r  dark:bg-[#1A1A1A] dark:border-gray-800">
             <ConsolePanel />
           </div>
 
-          {/* RIGHT - Findings */}
+          {/* RIGHT - Findings: Categorized security issues found during the scan */}
           <div className="p-4 border border-gray-400 rounded-md dark:border-gray-800 space-y-4 bg-gray-50 dark:bg-[#111]">
 
             <h3 className="text-regular font-bold dark:text-gray-300 border-b  border-gray-400 rounded-md dark:border-gray-800 px-2 py-1">
@@ -87,7 +91,7 @@ export default function ScanDetailPage() {
 
        
       </div>
-       {/* Bottom Status Strip */}
+       {/* Bottom Status Strip: Agent metrics and vulnerability counts */}
         <div className=" border-t bg-blue-100 rounded-md border-gray-200 dark:border-gray-800 px-6 py-3
                         flex justify-between items-center text-xs text-gray-500">
 
@@ -108,13 +112,19 @@ export default function ScanDetailPage() {
   );
 }
 
+/**
+ * Component to display a single metadata item with a label and value.
+ */
 function MetaItem({
   label,
   value,
   highlight,
 }: {
+  /** The description of the metadata. */
   label: string;
+  /** The value of the metadata. */
   value: string;
+  /** Whether to highlight the value with the primary color. */
   highlight?: boolean;
 }) {
   return (

@@ -2,9 +2,17 @@
 import { useRouter } from "next/navigation";
 import React,{ReactNode, SubmitEvent} from 'react'
 import { FaMeta,FaApple,FaGoogle, FaCheck ,FaStar } from "react-icons/fa6";
+/**
+ * Login page component for user authentication.
+ * Provides social login options and a standard email/password form (currently simulated).
+ */
 const Login = () => {
-      const router = useRouter();
+  const router = useRouter();
 
+  /**
+   * Handles the login form submission.
+   * Redirects to the dashboard on success.
+   */
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     router.push("/dashboard");
@@ -15,7 +23,7 @@ const Login = () => {
                         via-[#063A38] 
                         to-[#FF7A18]">
 
-      {/* LEFT PANEL / HERO */}
+      {/* LEFT PANEL: Hero section with branding and value proposition */}
       <div className="relative w-full lg:w-1/2 overflow-hidden">
 
         {/* Background Gradient */}
