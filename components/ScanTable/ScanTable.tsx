@@ -169,15 +169,13 @@ function SeverityBadge({
 }) {
   return (
     <span
-      className={`
-         flex items-center justify-center gap-1.5
+      className={`flex items-center justify-center gap-1.5
         w-7 h-7
         text-xs md:text-sm
         font-medium
         rounded-md
         whitespace-nowrap
-        ${SEVERITY_STYLES[level]}
-      `}
+        ${SEVERITY_STYLES[level]}`}
     >
     
       {count !== undefined && (

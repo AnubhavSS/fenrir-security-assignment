@@ -18,10 +18,7 @@ const Login = () => {
     router.push("/dashboard");
   };
     return (
-    <div className="min-h-screen flex flex-col lg:flex-row  bg-linear-to-br 
-                        from-[#0A0A0A] 
-                        via-[#063A38] 
-                        to-[#FF7A18]">
+    <div className="min-h-screen flex flex-col lg:flex-row  bg-linear-to-br from-[#0A0A0A] via-[#063A38] to-[#FF7A18]">
 
       {/* LEFT PANEL: Hero section with branding and value proposition */}
       <div className="relative w-full lg:w-1/2 overflow-hidden">
@@ -29,12 +26,10 @@ const Login = () => {
         {/* Background Gradient */}
         <div className="absolute inset-0" />
 
-        <div className="absolute inset-0 
-                        bg-[radial-gradient(circle_at_30%_20%,rgba(12,200,168,0.25),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient circle_at_30%_20%,rgba(12,200,168,0.25),transparent_50%)]" />
 
         {/* Content */}
-        <div className="relative z-10 px-6 py-16 md:px-20 md:py-0 
-                        flex md:min-h-screen items-center">
+        <div className="relative z-10 px-6 py-16 md:px-20 md:py-0 flex md:min-h-screen items-center">
 
           <div className="max-w-md md:max-w-lg space-y-6 md:space-y-8">
 
@@ -46,8 +41,7 @@ const Login = () => {
   <span className="text-white text-lg font-medium">aps</span>
 </div>
             {/* Heading */}
-            <h1 className="text-3xl md:text-5xl font-semibold 
-                           text-white leading-tight">
+            <h1 className="text-3xl md:text-5xl font-semibold text-white leading-tight">
               Expert level Cybersecurity
               <br />
               in <span className="text-primary">hours</span> not weeks.
@@ -103,11 +97,9 @@ const Login = () => {
       </div>
 
       {/* RIGHT PANEL / CARD */}
-      <div className=" flex justify-center items-start md:items-center
-                       px-6 py-12">
+      <div className=" flex justify-center items-start md:items-center px-6 py-12">
 
-        <div className="w-full max-w-md bg-white rounded-2xl 
-                        px-6 md:px-8 py-8 md:py-10 space-y-6">
+        <div className="w-full max-w-md bg-white rounded-2xl px-6 md:px-8 py-8 md:py-10 space-y-6">
 
           {/* Header */}
           <div className="text-center space-y-2">
@@ -145,8 +137,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-primary text-white py-3 rounded-full     
-                         font-medium hover:opacity-90 transition"
+              className="w-full bg-primary text-white py-3 rounded-full font-medium hover:opacity-90 transition"
             >
               Create account
             </button>
@@ -178,11 +169,7 @@ function Input({
       type={type}
       placeholder={placeholder}
       required
-      className="w-full border border-gray-200 rounded-lg 
-                 px-4 py-3 text-sm 
-                 focus:outline-none focus:ring-2 
-                 focus:ring-primary focus:border-transparent 
-                 transition"
+      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent  transition"
     />
   );
 }
@@ -205,10 +192,7 @@ function SocialButton({
   return (
     <button
       type="button"
-      className={`flex-1 rounded-full py-2 
-                  flex items-center justify-center 
-                  text-lg transition border 
-                  ${styles[provider]}`}
+      className={`flex-1 cursor-pointer rounded-full py-2 flex items-center justify-center text-lg transition border ${styles[provider]}`}
     >
       {icon}
     </button>

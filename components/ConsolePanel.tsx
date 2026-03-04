@@ -109,8 +109,7 @@ type LogEntry = {
 function ActivityConsole({ logs }: { logs: LogEntry[] }) {
   return (
     <div
-      className="flex-1
-        p-5
+      className="flex-1 p-5
         bg-[#FAFAFA] dark:bg-[#1A1A1A]
         font-mono text-[12px] leading-relaxed
         text-gray-600 dark:text-gray-400
