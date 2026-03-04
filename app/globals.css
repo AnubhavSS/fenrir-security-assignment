@@ -21,6 +21,7 @@
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
   --dark: #0F0F0F;
+  
 }
 
 @media (prefers-color-scheme: dark) {

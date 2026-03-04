@@ -18,7 +18,24 @@ const Login = () => {
     router.push("/dashboard");
   };
     return (
-    <div className="min-h-screen flex flex-col lg:flex-row  bg-linear-to-br from-[#0A0A0A] via-[#063A38] to-[#FF7A18]">
+<div className="relative min-h-screen flex flex-col lg:flex-row bg-linear-to-br from-[#0A0A0A] from-30% via-[#063A38] to-[#FF7A18]">
+
+  {/* grain layer */}
+  <svg
+    className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <filter id="noiseFilter">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.8"
+        numOctaves="3"
+        stitchTiles="stitch"
+      />
+    </filter>
+
+    <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+  </svg>
 
       {/* LEFT PANEL: Hero section with branding and value proposition */}
       <div className="relative w-full lg:w-1/2 overflow-hidden">
